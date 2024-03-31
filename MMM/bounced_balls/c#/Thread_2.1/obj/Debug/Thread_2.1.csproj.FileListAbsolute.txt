@@ -1,0 +1,19 @@
+C:\Users\Admin\source\repos\Thread_2.1\Thread_2.1\obj\Debug\Thread_2.1.csprojAssemblyReference.cache
+C:\Users\Admin\source\repos\Thread_2.1\Thread_2.1\obj\Debug\Thread_2._1.Form1.resources
+C:\Users\Admin\source\repos\Thread_2.1\Thread_2.1\obj\Debug\Thread_2._1.Properties.Resources.resources
+C:\Users\Admin\source\repos\Thread_2.1\Thread_2.1\obj\Debug\Thread_2.1.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\Thread_2.1\Thread_2.1\bin\Debug\Thread_2.1.exe.config
+C:\Users\Admin\source\repos\Thread_2.1\Thread_2.1\bin\Debug\Thread_2.1.exe
+C:\Users\Admin\source\repos\Thread_2.1\Thread_2.1\bin\Debug\Thread_2.1.pdb
+C:\Users\Admin\source\repos\Thread_2.1\Thread_2.1\obj\Debug\Thread_2.1.exe
+C:\Users\Admin\source\repos\Thread_2.1\Thread_2.1\obj\Debug\Thread_2.1.pdb
+E:\Прога\2 курс\Thread_2.1\Thread_2.1\obj\Debug\Thread_2.1.csproj.AssemblyReference.cache
+E:\Прога\2 курс\Thread_2.1\Thread_2.1\obj\Debug\Thread_2._1.Form1.resources
+E:\Прога\2 курс\Thread_2.1\Thread_2.1\obj\Debug\Thread_2._1.Properties.Resources.resources
+E:\Прога\2 курс\Thread_2.1\Thread_2.1\obj\Debug\Thread_2.1.csproj.GenerateResource.cache
+E:\Прога\2 курс\Thread_2.1\Thread_2.1\obj\Debug\Thread_2.1.csproj.CoreCompileInputs.cache
+E:\Прога\2 курс\Thread_2.1\Thread_2.1\obj\Debug\Thread_2.1.exe
+E:\Прога\2 курс\Thread_2.1\Thread_2.1\obj\Debug\Thread_2.1.pdb
+E:\Прога\2 курс\Thread_2.1\Thread_2.1\bin\Debug\Thread_2.1.exe.config
+E:\Прога\2 курс\Thread_2.1\Thread_2.1\bin\Debug\Thread_2.1.exe
+E:\Прога\2 курс\Thread_2.1\Thread_2.1\bin\Debug\Thread_2.1.pdb
