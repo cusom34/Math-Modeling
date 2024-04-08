@@ -1,5 +1,7 @@
 import math
+import numpy as np
 from tkinter import *
+
 
 #функция движения планет
 def motion():
@@ -129,6 +131,10 @@ yk_scr = yk * coef
 vxk = 4 * math.pi
 vyk = 1 * math.pi
 
+#звезды
+N_stars = 50
+stars = []
+r_stars = 1
 
 #радиусы планет
 r_s = 0.7
@@ -182,6 +188,7 @@ vx7 = 1.1 * math.pi
 vy7 = 0.3 * math.pi
 
 #начальные координаты планет относительно солнца
+x_stars = []
 x = 0
 x1 = 0
 x2 = 0
@@ -191,6 +198,7 @@ x5 = 0
 x6 = 0
 x7 = 0
 
+y_stars = []
 y = -1
 y1 = -1.5
 y2 = -2
@@ -201,6 +209,13 @@ y6 = -4
 y7 = -4.5
 
 #отрисовка солнечной системы
+for i in range(N_stars):
+    x_stars += [1920/coef*np.random.random()]
+    y_stars += [1080/coef*np.random.random()]
+    x_scr_stars = x_stars[i] * coef
+    y_scr_stars = y_stars[i] * coef
+    stars.append(c.create_oval(x_scr_stars-r_stars, y_scr_stars-r_stars, x_scr_stars+r_stars, y_scr_stars+r_stars, fill="white"))
+
 c.create_oval(x_scr0 - rad_solar, y_scr0 - rad_solar, x_scr0 + rad_solar, y_scr0 + rad_solar, fill='yellow')
 merkury = c.create_oval(x_scr0 + x * coef - rad_merk, y_scr0 + y * coef - rad_merk, x_scr0 + x * coef + rad_merk, y_scr0 + y * coef + rad_merk, fill='gray')
 venera = c.create_oval(x_scr0 + x * coef - rad_v, y_scr0 + y1 * coef - rad_v, x_scr0 + x * coef + rad_v, y_scr0 + y1 * coef + rad_v, fill='orange')
