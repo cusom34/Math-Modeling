@@ -5,7 +5,8 @@ from tkinter import *
 
 #функция движения планет
 def motion():
-    global vx, vy, x, y, vx1, vy1, x1, y1, vx2, vy2, x2, y2, vx3, vy3, x3, y3, vx4, vy4, x4, y4, vx5, vy5, x5, y5, vx6, vy6, x6, y6, vx7, vy7, x7, y7, vxk, vyk, xk, yk
+    global vx, vy, x, y, vx1, vy1, x1, y1, vx2, vy2, x2, y2, vx3, vy3, x3, y3, vx4, vy4, x4, y4, vx5, vy5, x5, y5, vx6,\
+        vy6, x6, y6, vx7, vy7, x7, y7, vxk, vyk, xk, yk
 
     r = (x * x + y * y)**0.5 #ур-я движения для меркурия
     ax = -GM * x / r / r / r
@@ -97,6 +98,25 @@ def motion():
     dxk = vxk * dt
     dyk = vyk * dt
 
+    """ 
+    #рисуем траектории
+    c.create_line(x_scr0 + x * coef - 0.5, y_scr0 + y * coef - 0.5, x_scr0 + x * coef + 0.5,
+                  y_scr0 + y * coef + 0.5, fill='red')
+    c.create_line(x_scr0 + x1 * coef - 0.5, y_scr0 + y1 * coef - 0.5, x_scr0 + x1 * coef + 0.5,
+                  y_scr0 + y1 * coef + 0.5, fill='red')
+    c.create_line(x_scr0 + x2 * coef - 0.5, y_scr0 + y2 * coef - 0.5, x_scr0 + x2 * coef + 0.5,
+                  y_scr0 + y2 * coef + 0.5, fill='red')
+    c.create_line(x_scr0 + x3 * coef - 0.5, y_scr0 + y3 * coef - 0.5, x_scr0 + x3 * coef + 0.5,
+                  y_scr0 + y3 * coef + 0.5, fill='red')
+    c.create_line(x_scr0 + x4 * coef - 0.5, y_scr0 + y4 * coef - 0.5, x_scr0 + x4 * coef + 0.5,
+                  y_scr0 + y4 * coef + 0.5, fill='red')
+    c.create_line(x_scr0 + x5 * coef - 0.5, y_scr0 + y5 * coef - 0.5, x_scr0 + x5 * coef + 0.5,
+                  y_scr0 + y5 * coef + 0.5, fill='red')
+    c.create_line(x_scr0 + x6 * coef - 0.5, y_scr0 + y6 * coef - 0.5, x_scr0 + x6 * coef + 0.5,
+                  y_scr0 + y6 * coef + 0.5, fill='red')
+    c.create_line(x_scr0 + x7 * coef - 0.5, y_scr0 + y7 * coef - 0.5, x_scr0 + x7 * coef + 0.5,
+                  y_scr0 + y7 * coef + 0.5, fill='red')
+    """
     #двигаем планеты
     c.move(merkury, dx * coef, dy * coef)
     c.move(venera, dx1 * coef, dy1 * coef)
@@ -107,7 +127,7 @@ def motion():
     c.move(uran, dx6 * coef, dy6 * coef)
     c.move(neptun, dx7 * coef, dy7 * coef)
 
-    c.move(kometa, dxk * coef, dyk * coef)
+    #c.move(kometa, dxk * coef, dyk * coef)
 
     root.after(20, motion)
 
@@ -117,12 +137,12 @@ c = Canvas(root, width=1920, height=1080, bg='black')
 c.pack()
 
 #константы
-coef = 100
-dt = 0.01
-GM = 4 * math.pi * math.pi
+coef = 93
+dt = 0.005
+GM = 4.4 * math.pi * math.pi
 
 #комета
-r_kom = 0.05
+r_kom = 0.01
 r_k = r_kom * coef
 xk = -8
 yk = -3
@@ -132,20 +152,20 @@ vxk = 4 * math.pi
 vyk = 1 * math.pi
 
 #звезды
-N_stars = 50
+N_stars = 130
 stars = []
 r_stars = 1
 
 #радиусы планет
 r_s = 0.7
-r_merkury = 0.025
+r_merkury = 0.04
 r_venera = 0.06
 r_earth = 0.063
 r_mars = 0.034
 r_jupiter = 0.1
 r_saturn = 0.058
-r_uran = 0.0253
-r_neptun = 0.0246
+r_uran = 0.045
+r_neptun = 0.04
 
 #радиусы планет в пикселях
 rad_solar = r_s * coef
@@ -160,32 +180,32 @@ rad_n = r_neptun * coef
 
 #координаты солнечной системы в окне отрисовки
 x_scr0 = 960
-y_scr0 = 500
+y_scr0 = 450
 
 #начальные скорости планет
 vx = 2 * math.pi
-vy = 0.5 * math.pi
+vy = 0 * math.pi
 
 vx1 = 1.6 * math.pi
-vy1 = 0.3 * math.pi
+vy1 = 0 * math.pi
 
 vx2 = 1.5 * math.pi
-vy2 = 0.3 * math.pi
+vy2 = 0 * math.pi
 
 vx3 = 1.4 * math.pi
-vy3 = 0.3 * math.pi
+vy3 = 0 * math.pi
 
 vx4 = 1.3 * math.pi
-vy4 = 0.3 * math.pi
+vy4 = 0 * math.pi
 
 vx5 = 1.2 * math.pi
-vy5 = 0.3 * math.pi
+vy5 = 0 * math.pi
 
 vx6 = 1.1 * math.pi
-vy6 = 0.3 * math.pi
+vy6 = 0 * math.pi
 
-vx7 = 1.1 * math.pi
-vy7 = 0.3 * math.pi
+vx7 = 1.05 * math.pi
+vy7 = 0 * math.pi
 
 #начальные координаты планет относительно солнца
 x_stars = []
@@ -216,17 +236,30 @@ for i in range(N_stars):
     y_scr_stars = y_stars[i] * coef
     stars.append(c.create_oval(x_scr_stars-r_stars, y_scr_stars-r_stars, x_scr_stars+r_stars, y_scr_stars+r_stars, fill="white"))
 
-c.create_oval(x_scr0 - rad_solar, y_scr0 - rad_solar, x_scr0 + rad_solar, y_scr0 + rad_solar, fill='yellow')
-merkury = c.create_oval(x_scr0 + x * coef - rad_merk, y_scr0 + y * coef - rad_merk, x_scr0 + x * coef + rad_merk, y_scr0 + y * coef + rad_merk, fill='gray')
-venera = c.create_oval(x_scr0 + x * coef - rad_v, y_scr0 + y1 * coef - rad_v, x_scr0 + x * coef + rad_v, y_scr0 + y1 * coef + rad_v, fill='orange')
-earth = c.create_oval(x_scr0 + x * coef - rad_e, y_scr0 + y2 * coef - rad_e, x_scr0 + x * coef + rad_e, y_scr0 + y2 * coef + rad_e, fill='blue')
-mars = c.create_oval(x_scr0 + x * coef - rad_mars, y_scr0 + y3 * coef - rad_mars, x_scr0 + x * coef + rad_mars, y_scr0 + y3 * coef + rad_mars, fill='orange')
-jupiter = c.create_oval(x_scr0 + x * coef - rad_j, y_scr0 + y4 * coef - rad_j, x_scr0 + x * coef + rad_j, y_scr0 + y4 * coef + rad_j, fill='brown')
-saturn = c.create_oval(x_scr0 + x * coef - rad_sat, y_scr0 + y5 * coef - rad_sat, x_scr0 + x * coef + rad_sat, y_scr0 + y5 * coef + rad_sat, fill='gray')
-uran = c.create_oval(x_scr0 + x * coef - rad_u, y_scr0 + y6 * coef - rad_u, x_scr0 + x * coef + rad_u, y_scr0 + y6 * coef + rad_u, fill='dark blue')
-neptun = c.create_oval(x_scr0 + x * coef - rad_n, y_scr0 + y7 * coef - rad_n, x_scr0 + x * coef + rad_n, y_scr0 + y7 * coef + rad_n, fill='light blue')
+#отрисовка орбит
+c.create_oval(x_scr0 - 0.94*coef, y_scr0 - 1*coef, x_scr0 + 0.89*coef, y_scr0 + 0.84*coef, outline = 'gray')
+c.create_oval(x_scr0 - 1.34*coef, y_scr0 - 1.5*coef, x_scr0 + 1.3*coef, y_scr0 + 1.18*coef, outline = 'gray')
+c.create_oval(x_scr0 - 2.07*coef, y_scr0 - 2*coef, x_scr0 + 2.03*coef, y_scr0 + 2.1*coef, outline = 'gray')
+c.create_oval(x_scr0 - 2.835*coef, y_scr0 - 2.505*coef, x_scr0 + 2.77*coef, y_scr0 + 3.14*coef, outline = 'gray')
+c.create_oval(x_scr0 - 3.54*coef, y_scr0 - 3*coef, x_scr0 + 3.47*coef, y_scr0 + 4.07*coef, outline = 'gray')
+c.create_oval(x_scr0 - 4.1*coef, y_scr0 - 3.5*coef, x_scr0 + 4.02*coef, y_scr0 + 4.69*coef, outline = 'gray')
+c.create_oval(x_scr0 - 4.45*coef, y_scr0 - 4*coef, x_scr0 + 4.4*coef, y_scr0 + 4.89*coef, outline = 'gray')
+c.create_oval(x_scr0 - 5.144*coef, y_scr0 - 4.5*coef, x_scr0 + 5.09*coef, y_scr0 + 5.82*coef, outline = 'gray')
 
-kometa = c.create_oval(x_scr0 + xk * coef - r_k, y_scr0 + yk * coef - r_k, x_scr0 + xk * coef + r_k, y_scr0 + yk * coef + r_k, fill='gray')
+solar = c.create_oval(x_scr0 - rad_solar, y_scr0 - rad_solar, x_scr0 + rad_solar, y_scr0 + rad_solar, fill='yellow')
+merkury = c.create_oval(x_scr0 + x * coef - rad_merk, y_scr0 + y * coef - rad_merk, x_scr0 + x * coef + rad_merk, y_scr0 + y * coef + rad_merk, fill='gray')
+venera = c.create_oval(x_scr0 + x1 * coef - rad_v, y_scr0 + y1 * coef - rad_v, x_scr0 + x1 * coef + rad_v, y_scr0 + y1 * coef + rad_v, fill='orange')
+earth = c.create_oval(x_scr0 + x2 * coef - rad_e, y_scr0 + y2 * coef - rad_e, x_scr0 + x2 * coef + rad_e, y_scr0 + y2 * coef + rad_e, fill='blue')
+mars = c.create_oval(x_scr0 + x3 * coef - rad_mars, y_scr0 + y3 * coef - rad_mars, x_scr0 + x3 * coef + rad_mars, y_scr0 + y3 * coef + rad_mars, fill='orange')
+jupiter = c.create_oval(x_scr0 + x4 * coef - rad_j, y_scr0 + y4 * coef - rad_j, x_scr0 + x4 * coef + rad_j, y_scr0 + y4 * coef + rad_j, fill='brown')
+saturn = c.create_oval(x_scr0 + x5 * coef - rad_sat, y_scr0 + y5 * coef - rad_sat, x_scr0 + x5 * coef + rad_sat, y_scr0 + y5 * coef + rad_sat, fill='gray')
+uran = c.create_oval(x_scr0 + x6 * coef - rad_u, y_scr0 + y6 * coef - rad_u, x_scr0 + x6 * coef + rad_u, y_scr0 + y6 * coef + rad_u, fill='dark blue')
+neptun = c.create_oval(x_scr0 + x7 * coef - rad_n, y_scr0 + y7 * coef - rad_n, x_scr0 + x7 * coef + rad_n, y_scr0 + y7 * coef + rad_n, fill='light blue')
+
+
+
+
+#kometa = c.create_oval(x_scr0 + xk * coef - r_k, y_scr0 + yk * coef - r_k, x_scr0 + xk * coef + r_k, y_scr0 + yk * coef + r_k, fill='gray')
 
 #запуск функции движения
 motion()
