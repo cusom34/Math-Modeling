@@ -60,7 +60,7 @@ c = Canvas(root, width=1920, height=1080, bg='#0A0A0A')
 c.pack()
 
 # константы
-SCALE_COEF = 70                     # масштаб солнечной системы
+SCALE_COEF = 93                     # масштаб солнечной системы
 TIME_STEP = 0.003
 GRAVITATIONAL_CONSTANT = 4.4 * math.pi * math.pi
 
