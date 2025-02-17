@@ -20,7 +20,6 @@ def motion():
         positions[planet][1] += velocities[planet][1] * TIME_STEP
         position_differential[planet][0] = velocities[planet][0] * TIME_STEP
         position_differential[planet][1] = velocities[planet][1] * TIME_STEP
-        print(planet)
 
     # Обработка движения Луны
     x_moon, y_moon = positions["moon"]
@@ -61,7 +60,7 @@ c = Canvas(root, width=1920, height=1080, bg='#0A0A0A')
 c.pack()
 
 # константы
-SCALE_COEF = 93                     # масштаб солнечной системы
+SCALE_COEF = 70                     # масштаб солнечной системы
 TIME_STEP = 0.003
 GRAVITATIONAL_CONSTANT = 4.4 * math.pi * math.pi
 
@@ -184,10 +183,10 @@ planets_image = {
                              solar_x + positions["jupiter"][0] * SCALE_COEF + planet_radius["jupiter"],
                              solar_y + positions["jupiter"][1] * SCALE_COEF + planet_radius["jupiter"],
                              fill='#C1884D', outline="#CD5700"),
-    "jupiter_spot": c.create_oval(solar_x + (positions["jupiter"][0]-0.05) * SCALE_COEF - (planet_radius["jupiter"]-16),
-                                  solar_y + positions["jupiter"][1] * SCALE_COEF - (planet_radius["jupiter"]-16),
-                                  solar_x + positions["jupiter"][0] * SCALE_COEF + (planet_radius["jupiter"]-16),
-                                  solar_y + (positions["jupiter"][1]+0.09) * SCALE_COEF + (planet_radius["jupiter"]-16),
+    "jupiter_spot": c.create_oval(solar_x + (positions["jupiter"][0]-0.02) * SCALE_COEF - planet_radius["jupiter"]*0.4,
+                                  solar_y + (positions["jupiter"][1]+0.04) * SCALE_COEF - planet_radius["jupiter"]*0.3,
+                                  solar_x + (positions["jupiter"][0]-0.02) * SCALE_COEF + planet_radius["jupiter"]*0.4,
+                                  solar_y + (positions["jupiter"][1]+0.04) * SCALE_COEF + planet_radius["jupiter"]*0.3,
                                   fill='#CD5700', outline="gray"),
     "saturn_circles": c.create_oval(solar_x + positions["saturn"][0] * SCALE_COEF - planet_radius["saturn"]*2,
                                     solar_y + positions["saturn"][1] * SCALE_COEF - planet_radius["saturn"]*0.6,
