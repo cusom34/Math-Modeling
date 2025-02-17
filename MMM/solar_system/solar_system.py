@@ -9,7 +9,7 @@ def motion():
 
     for planet in positions:
         if planet == "moon":
-            continue  # Луна обрабатывается отдельно
+            continue  # луна обрабатывается отдельно
         x, y = positions[planet]
         r = math.sqrt(x ** 2 + y ** 2)
         ax = -GRAVITATIONAL_CONSTANT * x / r ** 3
@@ -36,7 +36,7 @@ def motion():
     # двигаем планеты
     for planet in positions:
         if planet == "moon":
-            continue  # Луна обрабатывается отдельно
+            continue  # луна обрабатывается отдельно
         c.move(planets_image[planet], position_differential[planet][0] * SCALE_COEF,
                position_differential[planet][1] * SCALE_COEF)
 
@@ -123,7 +123,7 @@ initial_velocities = {
     "mars": (1.4 * math.pi, 0),
     "jupiter": (1.3 * math.pi, 0),
     "saturn": (1.2 * math.pi, 0),
-    "uranus": (1.1 * math.pi, 0),
+    "uranus": (1.12 * math.pi, 0),
     "neptune": (1.05 * math.pi, 0)
 }
 
@@ -139,14 +139,22 @@ for i in range(stars_count):
                                fill="white"))
 
 # отрисовка орбит
-# c.create_oval(solar_x - 0.93*SCALE_COEF, solar_y - 1*SCALE_COEF, solar_x + 0.9*SCALE_COEF, solar_y + 0.84*SCALE_COEF, outline='#3D3D3D')
-# c.create_oval(solar_x - 1.33*SCALE_COEF, solar_y - 1.5*SCALE_COEF, solar_x + 1.3*SCALE_COEF, solar_y + 1.15*SCALE_COEF, outline='#3D3D3D')
-# c.create_oval(solar_x - 2.06*SCALE_COEF, solar_y - 2*SCALE_COEF, solar_x + 2.04*SCALE_COEF, solar_y + 2.1*SCALE_COEF, outline='#3D3D3D')
-# c.create_oval(solar_x - 2.82*SCALE_COEF, solar_y - 2.505*SCALE_COEF, solar_x + 2.78*SCALE_COEF, solar_y + 3.14*SCALE_COEF, outline='#3D3D3D')
-# c.create_oval(solar_x - 3.53*SCALE_COEF, solar_y - 3*SCALE_COEF, solar_x + 3.48*SCALE_COEF, solar_y + 4.07*SCALE_COEF, outline='#3D3D3D')
-# c.create_oval(solar_x - 4.08*SCALE_COEF, solar_y - 3.5*SCALE_COEF, solar_x + 4.03*SCALE_COEF, solar_y + 4.69*SCALE_COEF, outline='#3D3D3D')
-# c.create_oval(solar_x - 4.44*SCALE_COEF, solar_y - 4*SCALE_COEF, solar_x + 4.41*SCALE_COEF, solar_y + 4.89*SCALE_COEF, outline='#3D3D3D')
-# c.create_oval(solar_x - 5.134*SCALE_COEF, solar_y - 4.5*SCALE_COEF, solar_x + 5.1*SCALE_COEF, solar_y + 5.82*SCALE_COEF, outline='#3D3D3D')
+# c.create_oval(solar_x - 0.93*SCALE_COEF, solar_y - 1*SCALE_COEF,                       # орбита меркурия
+#               solar_x + 0.9*SCALE_COEF, solar_y + 0.84*SCALE_COEF, outline='#3D3D3D')
+# c.create_oval(solar_x - 1.33*SCALE_COEF, solar_y - 1.5*SCALE_COEF,                     # орбита венеры
+#               solar_x + 1.3*SCALE_COEF, solar_y + 1.15*SCALE_COEF, outline='#3D3D3D')
+# c.create_oval(solar_x - 2.06*SCALE_COEF, solar_y - 2*SCALE_COEF,                       # орбита земли
+#               solar_x + 2.04*SCALE_COEF, solar_y + 2.1*SCALE_COEF, outline='#3D3D3D')
+# c.create_oval(solar_x - 2.82*SCALE_COEF, solar_y - 2.505*SCALE_COEF,                   # орбита марса
+#               solar_x + 2.78*SCALE_COEF, solar_y + 3.14*SCALE_COEF, outline='#3D3D3D')
+# c.create_oval(solar_x - 3.53*SCALE_COEF, solar_y - 3*SCALE_COEF,                       # орбита сатурна
+#               solar_x + 3.48*SCALE_COEF, solar_y + 4.07*SCALE_COEF, outline='#3D3D3D')
+# c.create_oval(solar_x - 4.08*SCALE_COEF, solar_y - 3.5*SCALE_COEF,                     # орбита юпитера
+#               solar_x + 4.03*SCALE_COEF, solar_y + 4.69*SCALE_COEF, outline='#3D3D3D')
+# c.create_oval(solar_x - 4.61*SCALE_COEF, solar_y - 4*SCALE_COEF,                       # орбита урана
+#               solar_x + 4.6*SCALE_COEF, solar_y + 5.3*SCALE_COEF, outline='#3D3D3D')
+# c.create_oval(solar_x - 5.134*SCALE_COEF, solar_y - 4.5*SCALE_COEF,                    # орбита нептун
+#               solar_x + 5.1*SCALE_COEF, solar_y + 5.82*SCALE_COEF, outline='#3D3D3D')
 
 # отрисовка солнца и планет
 planets_image = {
