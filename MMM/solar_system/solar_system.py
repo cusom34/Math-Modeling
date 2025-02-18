@@ -1,12 +1,12 @@
 import math
 import random
-
 import numpy as np
+import threading
 from tkinter import *
 
 
 # функция движения планет
-def motion():
+def planets_motion():
     global velocities, positions
 
     for planet in positions:
@@ -50,8 +50,10 @@ def motion():
            position_differential["saturn"][1] * SCALE_COEF)
     c.move(planets_image["uranus_circles"], position_differential["uranus"][0] * SCALE_COEF,
            position_differential["uranus"][1] * SCALE_COEF)
+    root.after(15, planets_motion)
 
-    # двигаем звезды
+# функция движения звезд
+def stars_motion():
     for star in stars_image:
         diameter = round(c.coords(star)[3] - c.coords(star)[1])
         if diameter == 4:
@@ -72,7 +74,7 @@ def motion():
             else:
                 c.move(star, stars_velocity2["1px"][0] * TIME_STEP * SCALE_COEF,
                        stars_velocity2["1px"][1] * TIME_STEP * SCALE_COEF)
-    root.after(15, motion)
+    root.after(15, stars_motion)
 
 
 # окно отрисовки
@@ -88,8 +90,8 @@ GRAVITATIONAL_CONSTANT = 4.4 * math.pi * math.pi
 
 # константы для звезд
 stars_image = []
-stars_count = 100                   # количество звезд
-stars_radius = [1, 1.5, 2]          # радиус звезд в пикселях
+stars_count = 50                   # количество звезд
+stars_radius = [1, 1.5, 2]         # радиус звезд в пикселях
 
 # радиусы планет (в мнимых единицах)
 planet_radius = {
@@ -252,6 +254,9 @@ planets_image = {
                              solar_y + positions["neptune"][1] * SCALE_COEF + planet_radius["neptune"],
                              fill='#2B6CC4', outline="dark blue")
 }
-# запуск функции движения
-motion()
+# запуск функций движения
+planets_thread = threading.Thread(target=planets_motion)
+stars_thread = threading.Thread(target=stars_motion)
+planets_thread.start()
+stars_thread.start()
 root.mainloop()
