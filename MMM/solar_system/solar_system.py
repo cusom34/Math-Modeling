@@ -166,7 +166,7 @@ velocities = {key: list(vel) for key, vel in initial_velocities.items()}
 for i in range(stars_count):
     stars_position += [[1920*np.random.random(), 1080*np.random.random()]]
     star_radius = stars_radius[random.randint(0, 2)]
-    stars_image.append(c.create_oval(stars_position[i][0]-star_radius, stars_position[i][1]-star_radius,
+    stars_image.append(c.create_rectangle(stars_position[i][0]-star_radius, stars_position[i][1]-star_radius,
                                      stars_position[i][0]+star_radius, stars_position[i][1]+star_radius,
                                      fill="white"))
 
