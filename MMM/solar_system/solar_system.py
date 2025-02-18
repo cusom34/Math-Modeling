@@ -21,7 +21,7 @@ def motion():
         position_differential[planet][0] = velocities[planet][0] * TIME_STEP
         position_differential[planet][1] = velocities[planet][1] * TIME_STEP
 
-    # Обработка движения Луны
+    # обработка движения Луны
     x_moon, y_moon = positions["moon"]
     r_moon = math.sqrt(x_moon ** 2 + y_moon ** 2)
     ax_moon = -GRAVITATIONAL_CONSTANT / 15 * x_moon / r_moon ** 3
@@ -48,16 +48,20 @@ def motion():
            position_differential["saturn"][1] * SCALE_COEF)
     c.move(planets_image["uranus_circles"], position_differential["uranus"][0] * SCALE_COEF,
            position_differential["uranus"][1] * SCALE_COEF)
-    for star in stars:
-        c.move(star, position_differential["mercury"][0]*0.5, position_differential["mercury"][1]*0.5)
-
+    # двигаем звезды
+    for star in stars_image:
+        if c.coords(star)[3] < 0:
+            c.move(star, stars_velocity[0] * TIME_STEP * SCALE_COEF, c.winfo_height())
+        else:
+            c.move(star, stars_velocity[0] * TIME_STEP * SCALE_COEF, stars_velocity[1] * TIME_STEP * SCALE_COEF)
     root.after(15, motion)
 
 
 # окно отрисовки
 root = Tk()
+root.state('zoomed')
 c = Canvas(root, width=1920, height=1080, bg='#0A0A0A')
-c.pack()
+c.pack(fill=BOTH, expand=True)
 
 # константы
 SCALE_COEF = 93                     # масштаб солнечной системы
@@ -65,7 +69,7 @@ TIME_STEP = 0.003
 GRAVITATIONAL_CONSTANT = 4.4 * math.pi * math.pi
 
 # константы для звезд
-stars = []
+stars_image = []
 stars_count = 130                   # количество звезд
 stars_radius = 1.2                  # радиус звезд в пикселях
 
@@ -85,7 +89,7 @@ planet_radius = {
 
 # координаты солнечной системы в окне отрисовки
 solar_x = 960
-solar_y = 450
+solar_y = 440
 
 # начальные координаты планет и звезд относительно солнца (в мнимых единицах)
 stars_position = []
@@ -114,7 +118,8 @@ position_differential = {
     "moon": [0, 0]
 }
 
-# начальные скорости планет
+# начальные скорости планет и звезд
+stars_velocity = [0, -1]
 initial_velocities = {
     "mercury": (2 * math.pi, 0),
     "venus": (1.6 * math.pi, 0),
@@ -134,9 +139,9 @@ velocities = {key: list(vel) for key, vel in initial_velocities.items()}
 # отрисовка звезд
 for i in range(stars_count):
     stars_position += [[1920*np.random.random(), 1080*np.random.random()]]
-    stars.append(c.create_oval(stars_position[i][0]-stars_radius, stars_position[i][1]-stars_radius,
-                               stars_position[i][0]+stars_radius, stars_position[i][1]+stars_radius,
-                               fill="white"))
+    stars_image.append(c.create_oval(stars_position[i][0]-stars_radius, stars_position[i][1]-stars_radius,
+                                     stars_position[i][0]+stars_radius, stars_position[i][1]+stars_radius,
+                                     fill="white"))
 
 # отрисовка орбит
 # c.create_oval(solar_x - 0.93*SCALE_COEF, solar_y - 1*SCALE_COEF,                       # орбита меркурия
