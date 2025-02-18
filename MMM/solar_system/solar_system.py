@@ -1,4 +1,6 @@
 import math
+import random
+
 import numpy as np
 from tkinter import *
 
@@ -48,12 +50,28 @@ def motion():
            position_differential["saturn"][1] * SCALE_COEF)
     c.move(planets_image["uranus_circles"], position_differential["uranus"][0] * SCALE_COEF,
            position_differential["uranus"][1] * SCALE_COEF)
+
     # двигаем звезды
     for star in stars_image:
-        if c.coords(star)[3] < 0:
-            c.move(star, stars_velocity[0] * TIME_STEP * SCALE_COEF, c.winfo_height())
-        else:
-            c.move(star, stars_velocity[0] * TIME_STEP * SCALE_COEF, stars_velocity[1] * TIME_STEP * SCALE_COEF)
+        diameter = round(c.coords(star)[3] - c.coords(star)[1])
+        if diameter == 4:
+            if c.coords(star)[3] < 0:
+                c.move(star, stars_velocity2["2px"][0] * TIME_STEP * SCALE_COEF, c.winfo_height())
+            else:
+                c.move(star, stars_velocity2["2px"][0] * TIME_STEP * SCALE_COEF,
+                       stars_velocity2["2px"][1] * TIME_STEP * SCALE_COEF)
+        elif diameter == 3:
+            if c.coords(star)[3] < 0:
+                c.move(star, stars_velocity2["1.5px"][0] * TIME_STEP * SCALE_COEF, c.winfo_height())
+            else:
+                c.move(star, stars_velocity2["1.5px"][0] * TIME_STEP * SCALE_COEF,
+                       stars_velocity2["1.5px"][1] * TIME_STEP * SCALE_COEF)
+        elif diameter == 2:
+            if c.coords(star)[3] < 0:
+                c.move(star, stars_velocity2["1px"][0] * TIME_STEP * SCALE_COEF, c.winfo_height())
+            else:
+                c.move(star, stars_velocity2["1px"][0] * TIME_STEP * SCALE_COEF,
+                       stars_velocity2["1px"][1] * TIME_STEP * SCALE_COEF)
     root.after(15, motion)
 
 
@@ -61,7 +79,7 @@ def motion():
 root = Tk()
 root.state('zoomed')
 c = Canvas(root, width=1920, height=1080, bg='#0A0A0A')
-c.pack(fill=BOTH, expand=True)
+c.pack()
 
 # константы
 SCALE_COEF = 93                     # масштаб солнечной системы
@@ -70,12 +88,12 @@ GRAVITATIONAL_CONSTANT = 4.4 * math.pi * math.pi
 
 # константы для звезд
 stars_image = []
-stars_count = 130                   # количество звезд
-stars_radius = 1.2                  # радиус звезд в пикселях
+stars_count = 100                   # количество звезд
+stars_radius = [1, 1.5, 2]         # радиус звезд в пикселях
 
 # радиусы планет (в мнимых единицах)
 planet_radius = {
-    "solar": 0.7 * SCALE_COEF,
+    "solar": 0.6 * SCALE_COEF,
     "mercury":  0.04 * SCALE_COEF,
     "venus":    0.06 * SCALE_COEF,
     "earth":   0.063 * SCALE_COEF,
@@ -119,6 +137,12 @@ position_differential = {
 }
 
 # начальные скорости планет и звезд
+stars_velocity2 = {
+    "1px": [0, -2.5],
+    "1.5px": [0, -1.5],
+    "2px": [0, -0.75]
+}
+
 stars_velocity = [0, -1]
 initial_velocities = {
     "mercury": (2 * math.pi, 0),
@@ -139,8 +163,9 @@ velocities = {key: list(vel) for key, vel in initial_velocities.items()}
 # отрисовка звезд
 for i in range(stars_count):
     stars_position += [[1920*np.random.random(), 1080*np.random.random()]]
-    stars_image.append(c.create_oval(stars_position[i][0]-stars_radius, stars_position[i][1]-stars_radius,
-                                     stars_position[i][0]+stars_radius, stars_position[i][1]+stars_radius,
+    star_radius = stars_radius[random.randint(0, 2)]
+    stars_image.append(c.create_oval(stars_position[i][0]-star_radius, stars_position[i][1]-star_radius,
+                                     stars_position[i][0]+star_radius, stars_position[i][1]+star_radius,
                                      fill="white"))
 
 # отрисовка орбит
