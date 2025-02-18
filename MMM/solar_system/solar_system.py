@@ -89,7 +89,7 @@ GRAVITATIONAL_CONSTANT = 4.4 * math.pi * math.pi
 # константы для звезд
 stars_image = []
 stars_count = 100                   # количество звезд
-stars_radius = [1, 1.5, 2]         # радиус звезд в пикселях
+stars_radius = [1, 1.5, 2]          # радиус звезд в пикселях
 
 # радиусы планет (в мнимых единицах)
 planet_radius = {
