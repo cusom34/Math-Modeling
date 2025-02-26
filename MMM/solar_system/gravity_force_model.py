@@ -85,7 +85,7 @@ c = Canvas(root, width=1920, height=1080, bg='#0A0A0A')
 c.pack()
 
 # константы
-SCALE_COEF = 93                     # масштаб солнечной системы
+SCALE_COEF = c.winfo_screenheight()//14                     # масштаб солнечной системы
 TIME_STEP = 0.003
 GRAVITATIONAL_CONSTANT = 4.4 * math.pi * math.pi
 
@@ -109,8 +109,8 @@ planet_radius = {
 }
 
 # координаты солнечной системы в окне отрисовки
-solar_x = 960
-solar_y = 440
+solar_x = c.winfo_screenwidth()/2
+solar_y = c.winfo_screenheight() * (1/2 -1/25)
 
 # начальные координаты планет и звезд относительно солнца (в мнимых единицах)
 stars_position = []
