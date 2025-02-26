@@ -20,10 +20,10 @@ def planets_motion():
         if planet_angle[planet] >= 2 * math.pi:
             planet_angle[planet] -= 2 * math.pi
 
-    c.coords(planets_image["jupiter_spot"], solar_x + positions["jupiter"][0] - 2 - planet_radius["jupiter"]*0.5,
-                                            solar_y + positions["jupiter"][1] + 4 - planet_radius["jupiter"]*0.3,
-                                            solar_x + positions["jupiter"][0] - 2 + planet_radius["jupiter"]*0.5,
-                                            solar_y + positions["jupiter"][1] + 4 + planet_radius["jupiter"]*0.3)
+    c.coords(planets_image["jupiter_spot"], solar_x + positions["jupiter"][0] - 2 - planet_radius["jupiter"]*0.3,
+                                            solar_y + positions["jupiter"][1] - planet_radius["jupiter"]*0.1,
+                                            solar_x + positions["jupiter"][0] + planet_radius["jupiter"]*0.3,
+                                            solar_y + positions["jupiter"][1] + 4 + planet_radius["jupiter"]*0.1)
 
     c.coords(planets_image["saturn_circles"], solar_x + positions["saturn"][0] - planet_radius["saturn"] * 2,
                                               solar_y + positions["saturn"][1] - planet_radius["saturn"] * 0.6,
