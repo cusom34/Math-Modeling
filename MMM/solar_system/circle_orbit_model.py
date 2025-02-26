@@ -178,7 +178,7 @@ stars_velocity2 = {
 
 # отрисовка звезд
 for i in range(stars_count):
-    stars_position += [[1920*np.random.random(), 1080*np.random.random()]]
+    stars_position += [[c.winfo_screenwidth()*np.random.random(), c.winfo_screenheight()*np.random.random()]]
     star_radius = stars_radius[random.randint(0, 2)]
     stars_image.append(c.create_oval(stars_position[i][0]-star_radius, stars_position[i][1]-star_radius,
                                      stars_position[i][0]+star_radius, stars_position[i][1]+star_radius,
