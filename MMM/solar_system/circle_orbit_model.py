@@ -74,7 +74,7 @@ c = Canvas(root, width=1920, height=1080, bg='#0A0A0A')
 c.pack()
 
 # константы
-SCALE_COEF = 83                    # масштаб солнечной системы
+SCALE_COEF = c.winfo_screenheight()//14                    # масштаб солнечной системы
 TIME_STEP = 0.003
 
 # координаты солнечной системы в окне отрисовки
